@@ -11,6 +11,27 @@ const inputLevel = document.getElementsByName("level") //gera um node list
 const inputNews = document.getElementById("cadastroInputNews")
 
 
+
+inputArea.addEventListener("change", function(){
+
+    if (inputArea.selectedIndex === 0){
+        document.querySelector("body").style.backgroundColor  = "#e3f2fd"
+    }
+
+    else if (inputArea.selectedIndex === 1){
+        document.querySelector("body").style.backgroundColor  = "#f1f8e9"
+    }
+
+    else if (inputArea.selectedIndex === 2){
+        document.querySelector("body").style.backgroundColor  = "#fce4ec"
+    }
+
+    else if (inputArea.selectedIndex === 3){
+         document.querySelector("body").style.backgroundColor = "#ffecb3"
+    }
+})
+
+
 const button = document.querySelector(".cadastro__button")
 
 button.addEventListener("click", function(evento){
@@ -18,17 +39,7 @@ button.addEventListener("click", function(evento){
 
     const optionSelect = inputArea.options[inputArea.selectedIndex]
 
-    let radioItem;
-    for (let i = 0; i < inputLevel.length; i++){
-        if (inputLevel[i].checked){
-            console.log(inputLevel[i])
-            radioItem = inputLevel[i]
-        }
-    }
-
-    console.log(radioItem.value)
-
-
+        
     console.log(optionSelect)
     //console.log(inputNews)
     //console.log(inputNews.checked)
@@ -79,38 +90,34 @@ button.addEventListener("click", function(evento){
     else if(inputPhone.value === undefined || inputPhone.value === null || inputPhone.value === "" || inputPhone.value === " ") {
         inputPhone.focus()
         return false;
-
     }
 
-    else if (inputArea.selectedIndex === 0){
-        document.querySelector("body").style.backgroundColor  = "blue"
+
+    let radioItem;
+    for (let i = 0; i < inputLevel.length; i++){
+        if (inputLevel[i].checked){
+            console.log(inputLevel[i])
+            radioItem = inputLevel[i]
+            console.log(radioItem)
+        }   
     }
 
-    else if (inputArea.selectedIndex === 1){
-        document.querySelector("body").style.backgroundColor  = "red"
-    }
+    console.log(radioItem.value)
 
-    else if (inputArea.selectedIndex === 2){
-        document.querySelector("body").style.backgroundColor  = "green"
-    }
-
-    else if (inputArea.selectedIndex === 3){
-         document.querySelector("body").style.backgroundColor = "yellow"
-    }
-
-    else if (radioItem.value == "Junior") {
+    if (radioItem.value === "Junior") {
         console.log("0 - 2 anos de experiência")
+    } else if (radioItem.value === "Pleno") {
+        console.log("2 - 5 anos de experiência")
+    } else if (radioItem.value === "Senior") {
+        console.log("5+ anos de experiência")
     }
-
-    else if (radioItem.value == "Pleno") {
-        alert("2 - 5 anos de experiência")
-    }
-
-    else if (radioItem.value == "Senior") {
-        alert("5+ anos de experiência")
-    }
+    
 
 
+    //document.querySelector("body").style.backgroundColor = "#fff"
+    this.closest(".cadastro").style.backgroundColor = "#f3f3f3"
+    const form = this.closest("form")
+    form.submit()
     //alert(`Cadastro de ${inputEmail.value} realizado com sucesso`)
   return true
 
