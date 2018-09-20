@@ -8,8 +8,8 @@ const figCaption = document.querySelector(".gallery__caption")
 for (let i = 0; i < links.children.length; i++){
    // console.log(links.children[i]
 
-    const fio = links.children[i]
-    fio.addEventListener("click", function(){
+    const itens = links.children[i]
+    itens.addEventListener("click", function(){
         //pegar o caminho da img no atributo data-image
         const img = this.dataset.image;
         console.log(img)
@@ -25,8 +25,8 @@ for (let i = 0; i < links.children.length; i++){
 /* for (let i = 0; i < links.children.length; i++){
     // console.log(links.children[i]
  
-     const fio = links.children[i]
-     fio.addEventListener("click", function(){
+     const itens = links.children[i]
+     itens.addEventListener("click", function(){
          //pegar o caminho da img no atributo data-image
          const descricao = this.dataset.title;
          console.log(descricao)
