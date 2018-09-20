@@ -5,8 +5,14 @@ const button = document.querySelector(".tweet-composer__button")
 
 let counter = document.getElementById("tweetComposerCounter")
 
-
-
+composerText.addEventListener("keydown", function(evento1){
+    let cont = 280 - composerText.value.length
+    console.log(cont)
+    counter.innerHTML = cont
+    if (cont == 0){
+        cont.preventDefault()
+    }
+})
 
 
 button.addEventListener("click", function(event){
