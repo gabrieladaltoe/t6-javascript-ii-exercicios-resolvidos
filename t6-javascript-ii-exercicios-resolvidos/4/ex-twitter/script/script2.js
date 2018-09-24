@@ -5,14 +5,6 @@ const button = document.querySelector(".tweet-composer__button")
 
 let counter = document.getElementById("tweetComposerCounter")
 
-composerText.addEventListener("keydown", function(evento1){
-    let cont = 280 - composerText.value.length
-    console.log(cont)
-    counter.innerHTML = cont
-    if (cont == 0){
-        cont.preventDefault()
-    }
-})
 
 
 button.addEventListener("click", function(event){
@@ -23,6 +15,19 @@ button.addEventListener("click", function(event){
         return false
     }
 
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    
+    const date = new Date()
+    const month = date.toLocaleDateString("pt-br", {month: "short"})
+    const day = date.getDate()
+    const h = addZero(date.getHours())
+    const m = addZero(date.getMinutes())
+    const s = addZero(date.getSeconds())
 
     // if(inputTweet.value.lengtg)
 
@@ -31,9 +36,9 @@ button.addEventListener("click", function(event){
 
     const tweetHeader = document.createElement("div")
     tweetHeader.className = "tweets-timeline__header"
-    tweetHeader.innerHTML = `<span class="tweets-timeline__name">gabigabai</span>
-            <span class="tweets-timeline__username">@gabinha87_</span>
-            <span class="tweets-timeline__date">${new Date()}</span>`
+    tweetHeader.innerHTML = `<span class="tweets-timeline__name">Gabriela</span>
+            <span class="tweets-timeline__username">@gabi</span>
+            <span class="tweets-timeline__date"> ${day} de ${month} ${h}:${m}</span>`
 
     const newTweetArea = document.createElement("p")
     
@@ -60,5 +65,31 @@ button.addEventListener("click", function(event){
     })
 
     composerText.value = ""
+    counter.innerHTML = 280
+    counter.style.color = "#fff"
 
+
+})
+
+composerText.addEventListener("keydown", function(evento1){
+    let cont = 280 - composerText.value.length
+    console.log(cont)
+    counter.innerHTML = cont
+
+    /*  if(composerText.value.length > maxLength){
+        composerText.value = composerText.value.substring(0, maxLength)
+    }   */
+
+    if (cont < 16){
+        counter.style.color = "#ff0000"
+    } else if (cont < 0 ){
+        button.disabled = true
+    } else {
+        counter.style.color = "#fff"
+        button.disabled = false
+    }
+    /* if 
+        (cont == 0){
+        cont.preventDefault()
+    }   */
 })
